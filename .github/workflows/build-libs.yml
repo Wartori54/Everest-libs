@@ -316,6 +316,9 @@ jobs:
       with:
         global-json-file: source/MonoMod/global.json
     
+    - name: Get SN
+      run: sudo apt install -y mono-devel
+    
     - name: Build MonoMod
       working-directory: source/MonoMod
       run: |
