@@ -261,7 +261,7 @@ jobs:
         cp source/FNA/lib/Theorafile/libtheorafile.so libtheorafile.so
 
     - name: Upload Artifacts (Windows)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ matrix.platform == 'windows' }}
       with:
         name: fnalibs-windows-${{ matrix.msys2_env }}
@@ -272,7 +272,7 @@ jobs:
           libtheorafile.dll
 
     - name: Upload Artifacts (macOS)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ matrix.platform == 'macos' }}
       with:
         name: fnalibs-macos-x86_64
@@ -285,7 +285,7 @@ jobs:
           libvulkan.1.dylib
 
     - name: Upload Artifacts (Linux)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ matrix.platform == 'linux' }}
       with:
         name: fnalibs-linux-x86_64
@@ -314,7 +314,7 @@ jobs:
     
     - uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '9'
+        global-json-file: source/MonoMod/global.json
     
     - name: Build MonoMod
       working-directory: source/MonoMod
@@ -412,7 +412,7 @@ jobs:
       run: mv target/${{ matrix.target }}/release/${{ startsWith(matrix.os, 'windows') && 'piton.exe' || 'piton' }} ${{ matrix.lib_name }}
   
     - name: Upload Piton binaries
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: piton-apphosts
         path: source/Piton/apphost/${{ matrix.lib_name }}
