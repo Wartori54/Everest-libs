@@ -344,7 +344,6 @@ jobs:
         
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
-      if: ${{ matrix.platform == 'linux' }}
       with:
         name: managed-libraries
         path: all_artifacts
