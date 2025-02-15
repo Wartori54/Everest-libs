@@ -434,7 +434,7 @@ jobs:
           rm -rf ../lib-ext ../binaries
           mkdir ../lib-ext ../binaries
   
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: ../binaries
           
