@@ -17,7 +17,6 @@ permissions:
 
 env:
   BUILD_TYPE: Release
-  NET_FRAMEWORK: net7.0
 
 jobs:
   build-fnalibs:
@@ -217,7 +216,8 @@ jobs:
           -DSDL2_INCLUDE_DIRS=${{ env.SDL2_DIR }}/include/SDL2 \
           -DSDL2_LIBRARIES=${{ env.SDL2_LIB }} \
           -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded$<$<CONFIG:Debug>:Debug>" \
-          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # Workaround to avoid upgrading the submodule for now
 
     - name: Build FNA3D
       working-directory: source/FNA/lib/FNA3D
