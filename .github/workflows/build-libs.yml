@@ -241,6 +241,7 @@ jobs:
           -DSDL2_LIBRARIES=${{ env.SDL2_LIB }} \
           -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded$<$<CONFIG:Debug>:Debug>" \
           -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # Workaround to avoid upgrading the submodule for now
       
     - name: Build FAudio
       working-directory: source/FNA/lib/FAudio
